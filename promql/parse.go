@@ -634,6 +634,13 @@ func (p *parser) primaryExpr() Expr {
 		f := p.number(t.val)
 		return &NumberLiteral{clientmodel.SampleValue(f)}
 
+	case t.typ == itemDuration:
+		duration, err := parseDuration(t.val)
+		if err != nil {
+			p.error(err)
+		}
+		return &NumberLiteral{clientmodel.SampleValue(duration.Seconds())}
+
 	case t.typ == itemString:
 		s := t.val[1 : len(t.val)-1]
 		return &StringLiteral{s}

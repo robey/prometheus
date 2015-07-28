@@ -571,7 +571,7 @@ func lexValueSequence(l *lexer) stateFn {
 		l.emit(itemBlank)
 	case unicode.IsDigit(r) || (r == '.' && unicode.IsDigit(l.peek())):
 		l.backup()
-		lexNumber(l)
+		lexNumberOrDuration(l)
 	case isAlpha(r):
 		l.backup()
 		// We might lex invalid items here but this will be caught by the parser.

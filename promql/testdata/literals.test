@@ -54,3 +54,9 @@ eval instant at 50m 0 / 0
 
 eval instant at 50m 1 % 0
 	NaN
+
+eval instant at 50m 1h
+	3600
+
+eval instant at 50m 20m
+	1200
